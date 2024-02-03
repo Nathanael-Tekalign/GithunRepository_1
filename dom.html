@@ -16,13 +16,35 @@
 var element = document.querySelector(".w3-container");
 var container;
 container = element;
+
 let container = document.getElementById("container");
 for (let i = 1; i <= 5; i++) {
   let p = document.createElement("p");
   p.textContent = "This is paragraph " + i;
   container.appendChild(p);
-}
+  }
+  var button = document.createElement ('button');
+button.textContent = 'Click me';
+  function changeColors() {
+    var body = document.getElementsByTagName("body")[0];
+    var container = document.getElementById("container");
+    var bodyColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    var containerColor = "#" + Math.floor(Math.random() * 16777215).toString(16);
+    body.style.backgroundColor = bodyColor;
+    container.style.backgroundColor = containerColor;
+    var r = parseInt(containerColor.substr(1, 2), 16);
+    var g = parseInt(containerColor.substr(3, 2), 16);
+    var b = parseInt(containerColor.substr(5, 2), 16);
+    var luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    if (luminance < 128) {
+      container.style.color = "white";
+    } else {
+      container.style.color = "black";
+    }
+  }
+    button.onClick = changeColors;
+    document.body.appendChild (button);
            </script>
         </div>
     </body>
-</html>
+</html> 
